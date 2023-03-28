@@ -1,7 +1,13 @@
-import { testeRouter } from './routes/teste.routes'
+import 'express-async-errors'
+import { moviesRouter } from './routes/movies.routes'
 import express from 'express'
+import { errorHandler } from './errors'
 
-export const app = express()
+const app = express()
 app.use(express.json())
 
-app.use('/teste', testeRouter)
+app.use('/movies', moviesRouter)
+
+app.use(errorHandler)
+
+export default app
